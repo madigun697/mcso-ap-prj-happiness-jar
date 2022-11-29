@@ -1,24 +1,35 @@
 package java.edu.utexas.cs.happinessjar
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import java.edu.utexas.cs.happinessjar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container)
-        navController = navHostFragment?.findNavController()!!
-        setupWithNavController(binding.bottomNav, navController)
+        binding.bottomNav.setOnItemSelectedListener {
+            Log.d("Main", it.title.toString())
+            when (it.title) {
+                "Settings" -> {
+                    val intent = Intent(this, SettingsActivity::class.java)
+                    startActivity(intent)
+                }
+                "New" -> {
+                    val intent = Intent(this, LetterActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
     }
 
 }

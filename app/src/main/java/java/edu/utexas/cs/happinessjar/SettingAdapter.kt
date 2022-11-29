@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import java.edu.utexas.cs.happinessjar.databinding.SettingItemBinding
 
-class SettingAdapter(context: Context, items: MutableList<String>, icons: MutableList<Int>) : BaseAdapter() {
+class SettingAdapter(items: MutableList<String>, icons: MutableList<Int>) : BaseAdapter() {
     private val items = mutableListOf<String>().apply { addAll(items) }
     private val icons = mutableListOf<Int>().apply { addAll(icons) }
 
