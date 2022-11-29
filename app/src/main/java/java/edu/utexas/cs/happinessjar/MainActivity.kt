@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 "Logout" -> {
                     viewModel.signOut()
-                    AuthInit(viewModel, signInLauncher)
+                    val intent = Intent(this, AuthActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true
