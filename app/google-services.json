@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "339244951359",
+    "project_id": "happiness-jar-b660a",
+    "storage_bucket": "happiness-jar-b660a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339244951359:android:2629f7eb367f4350e6958a",
+        "android_client_info": {
+          "package_name": "edu.utexas.cs.happinessjar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339244951359-gjrm5vfbloq9lotbn4uun4f6ao4nmond.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAicRE6U_nZBlK9Uezi1gOtcjKa5T6PJbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339244951359-gjrm5vfbloq9lotbn4uun4f6ao4nmond.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339244951359:android:c381b99a8c29cf60e6958a",
+        "android_client_info": {
+          "package_name": "java.edu.utexas.cs.happinessjar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339244951359-gjrm5vfbloq9lotbn4uun4f6ao4nmond.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAicRE6U_nZBlK9Uezi1gOtcjKa5T6PJbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339244951359-gjrm5vfbloq9lotbn4uun4f6ao4nmond.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
