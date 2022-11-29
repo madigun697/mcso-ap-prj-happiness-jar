@@ -1,5 +1,6 @@
 package java.edu.utexas.cs.happinessjar
 
+import android.content.Intent
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,12 @@ class SettingsActivity : AppCompatActivity() {
         binding.settingList.adapter = settingAdapter
         binding.settingList.setOnItemClickListener { parent, view, position, id ->
             Log.d("Setting", settingItems[position])
+            when (settingItems[position]) {
+                "Profile settings" -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 
