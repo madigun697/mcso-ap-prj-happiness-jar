@@ -3,10 +3,10 @@ package java.edu.utexas.cs.happinessjar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import java.edu.utexas.cs.happinessjar.databinding.ActivityAuthBinding
+import java.edu.utexas.cs.happinessjar.models.UserModel
 
 class AuthActivity : AppCompatActivity() {
     private val viewModel: UserModel by viewModels()

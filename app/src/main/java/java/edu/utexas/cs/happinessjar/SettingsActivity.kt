@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import java.edu.utexas.cs.happinessjar.databinding.ActivitySettingsBinding
+import java.edu.utexas.cs.happinessjar.utils.SettingAdapter
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
@@ -34,6 +35,10 @@ class SettingsActivity : AppCompatActivity() {
             when (settingItems[position]) {
                 "Profile settings" -> {
                     val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+                "Letters" -> {
+                    val intent = Intent(this, LetterListActivity::class.java)
                     startActivity(intent)
                 }
             }

@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import java.edu.utexas.cs.happinessjar.databinding.ActivityMainBinding
+import java.edu.utexas.cs.happinessjar.models.UserModel
+import java.edu.utexas.cs.happinessjar.utils.AuthInit
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: UserModel by viewModels()
@@ -24,10 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        viewModel.updateUser()
-        viewModel.observeDisplayName().observe(this, Observer { binding.userName.text = "Hi! $it!" })
-
-        binding.bottomNav.setOnItemSelectedListener {
+        binding.bottomNav.setOnItemSelectedListener { it ->
             Log.d("Main", it.title.toString())
             when (it.title) {
                 "Settings" -> {
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 "New" -> {
                     val intent = Intent(this, LetterActivity::class.java)
+                    viewModel.observeUid().observe(this, Observer { intent.putExtra("uid", it) })
                     startActivity(intent)
                 }
                 "Logout" -> {
@@ -48,6 +48,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         AuthInit(viewModel, signInLauncher)
+    }
+
+    private fun fetchUserData() {
+        viewModel.updateUser()
+        viewModel.observeDisplayName().observe(this, Observer { binding.userName.text = "Hi! $it!" })
+        viewModel.observeLetterCnt().observe(this, Observer { binding.notesCnt.text = "${it.toString()} happiness" })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchUserData()
     }
 
 }

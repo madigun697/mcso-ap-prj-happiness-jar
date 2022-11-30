@@ -1,4 +1,4 @@
-package java.edu.utexas.cs.happinessjar
+package java.edu.utexas.cs.happinessjar.utils
 
 import android.content.Intent
 import android.util.Log
@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import java.edu.utexas.cs.happinessjar.models.UserModel
 
 
 // https://firebase.google.com/docs/auth/android/firebaseui

@@ -1,9 +1,7 @@
 package java.edu.utexas.cs.happinessjar
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -30,6 +28,8 @@ class ProfileActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         binding.userName.setText(user!!.displayName, TextView.BufferType.EDITABLE)
         binding.userName.isFocusable = true
+
+        binding.userName.requestFocus()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
