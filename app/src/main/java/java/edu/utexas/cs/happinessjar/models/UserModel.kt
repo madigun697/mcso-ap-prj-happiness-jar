@@ -1,5 +1,6 @@
 package java.edu.utexas.cs.happinessjar.models
 
+import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlin.coroutines.coroutineContext
 
 class UserModel: ViewModel() {
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -18,7 +20,7 @@ class UserModel: ViewModel() {
     private var displayName = MutableLiveData("Uninitialized")
     private var email = MutableLiveData("Uninitialized")
     private var uid = MutableLiveData("Uninitialized")
-    private var letterCnt = MutableLiveData(0)
+    private var letterCnt = MutableLiveData(-1)
 
     init {
         updateUser()
@@ -36,11 +38,12 @@ class UserModel: ViewModel() {
             displayName.postValue(currentUser.displayName)
             email.postValue(currentUser.email)
             uid.postValue(currentUser.uid)
-
+            getLetterCnt()
             viewModelScope.launch(viewModelScope.coroutineContext + Dispatchers.IO) {
                 getLetterCnt()
             }
         }
+        Log.d("uid", uid.value.toString())
     }
 
     fun observeDisplayName() : LiveData<String> {
@@ -59,11 +62,12 @@ class UserModel: ViewModel() {
         FirebaseAuth.getInstance().signOut()
         userLogout()
     }
-    suspend fun getLetterCnt() {
-        val cnt = db.collection(uid.value!!).count()
-        val snapshot = cnt.get(AggregateSource.SERVER).await()
-
-        letterCnt.postValue(snapshot.count.toInt())
-        Log.d("model", snapshot.count.toString())
+    private fun getLetterCnt() {
+        db.collection(uid.value!!).addSnapshotListener { snapshot, e ->
+            if (snapshot != null) {
+                letterCnt.postValue(snapshot.count())
+            }
+        }
+        Log.d("model", letterCnt.value.toString())
     }
 }

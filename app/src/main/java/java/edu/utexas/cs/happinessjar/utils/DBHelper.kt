@@ -1,6 +1,5 @@
 package java.edu.utexas.cs.happinessjar.utils
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
